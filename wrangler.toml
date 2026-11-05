@@ -5,3 +5,4 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "sp-db"
+database_id = "ae7b1d8e-1055-457d-bc76-b20ce24e3507"
