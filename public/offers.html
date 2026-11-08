@@ -48,7 +48,7 @@
         <img src="/images/logo.png" alt="شعار شركة المستقبل الأقوى" class="brand-logo">
         <div class="brand-text">
           <span class="ar">شركة المستقبل الأقوى</span>
-          <span class="en">متجر قطع الغيار</span>
+          <span class="en">متجر الصين</span>
         </div>
       </a>
 
@@ -194,7 +194,7 @@
           // منتجات العرض
           const productsHtml = o.items.map(item => `
             <div class="offer-product-item">
-              <img src="/images/products/${item.product_id}.png" onerror="this.src='/images/logo.png'">
+              <img src="/images/products/${item.product_id}.webp" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='/images/products/${o.product_id}.jpg';}else{this.src='/images/logo.png';}">
               <div class="info">
                 <div class="name">${item.product_name}</div>
                 <div class="qty">الكمية: ${item.quantity}</div>
