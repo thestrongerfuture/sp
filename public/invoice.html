@@ -374,22 +374,16 @@
 
       // تعبئة البيانات
       $('#invId').textContent = `#${o.id}`;
-      // تحويل التوقيت من UTC إلى توقيت سوريا (UTC+3)
-      const date = new Date(o.created_at);
-      const syriaDate = new Date(date.getTime() + (3 * 60 * 60 * 1000)); // إضافة 3 ساعات
-      $('#invDate').textContent = syriaDate.toLocaleString('ar-EG', { timeZone: 'Asia/Damascus' });
+      $('#invDate').textContent = new Date(o.created_at).toLocaleString('ar-EG');
       $('#invName').textContent = o.customer_name;
       $('#invPhone').textContent = o.customer_phone;
       $('#invAddress').textContent = o.customer_address || '—';
 
-      // الحالة
+            // الحالة
       const statusEl = $('#invStatus');
-      if (o.status === 'pending' && o.is_confirmed == 0) {
+      if (o.status === 'pending') {
         statusEl.textContent = 'قيد الانتظار للموافقة';
         statusEl.className = 'status-badge status-pending';
-      } else if (o.status === 'pending' && o.is_confirmed == 1) {
-        statusEl.textContent = 'بانتظار الموافقة';
-        statusEl.className = 'status-badge status-confirmed';
       } else if (o.status === 'approved') {
         statusEl.textContent = 'تمت الموافقة ✅';
         statusEl.className = 'status-badge status-approved';
@@ -398,6 +392,9 @@
         statusEl.className = 'status-badge';
         statusEl.style.background = '#fee2e2';
         statusEl.style.color = '#991b1b';
+      } else {
+        statusEl.textContent = 'قيد الانتظار للموافقة'; // افتراضي
+        statusEl.className = 'status-badge status-pending';
       }
 
       // المنتجات
