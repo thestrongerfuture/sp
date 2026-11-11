@@ -163,7 +163,7 @@
       let total = 0;
       let count = 0;
 
-      cart.forEach(item => {
+      cart.forEach((item, index) => {
         total += item.price * item.quantity;
         count += item.quantity;
 
@@ -313,23 +313,23 @@
 
         // --- تجهيز رسالة الواتساب ---
         const managerPhone = '963956410417'; // رقم المدير
-        let waMessage = `🧾 *فاتورة طلب جديدة* 🧾\n`;
-        waMessage += `------------------------\n`;
-        waMessage += `👤 *الاسم:* ${name}\n`;
-        waMessage += `📞 *الهاتف:* ${phone}\n`;
-        if (address) waMessage += `📍 *العنوان:* ${address}\n`;
-        waMessage += `------------------------\n`;
-        waMessage += `📦 *المنتجات:*\n`;
+        let waMessage = ` *فاتورة طلب جديدة* \n`;
+        waMessage += `--------------------\n`;
+        waMessage += ` *الاسم:* ${name}\n`;
+        waMessage += ` *الهاتف:* ${phone}\n`;
+        if (address) waMessage += ` *العنوان:* ${address}\n`;
+        waMessage += `--------------------\n`;
+        waMessage += ` *المنتجات:*\n`;
 
-        cart.forEach(item => {
+        cart.forEach((item, index) => {
           const itemTotal = (item.price * item.quantity).toFixed(2);
-          waMessage += `▪️ ${item.name} (الكمية: ${item.quantity}) = $${itemTotal}\n`;
+          waMessage += ` ${index + 1}. ${item.name} (الكمية: ${item.quantity}) = $${itemTotal}\n`;
         });
 
-        waMessage += `------------------------\n`;
-        waMessage += `💰 *الإجمالي:* $${total.toFixed(2)}\n`;
-        waMessage += `🔗 *رابط الفاتورة:* ${location.origin}/invoice.html?id=${data.order_id}\n`;
-        waMessage += `📝 *رقم الطلب:* #${data.order_id}`;
+        waMessage += `--------------------\n`;
+        waMessage += ` *الإجمالي:* $${total.toFixed(2)}\n`;
+        waMessage += ` *رابط الفاتورة:* ${location.origin}/invoice.html?id=${data.order_id}\n`;
+        waMessage += ` *رقم الطلب:* #${data.order_id}`;
 
         const encodedMessage = encodeURIComponent(waMessage);
         const waUrl = `https://wa.me/${managerPhone}?text=${encodedMessage}`;
