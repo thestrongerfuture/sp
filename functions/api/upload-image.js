@@ -1,5 +1,5 @@
 const GITHUB_OWNER = "thestrongerfuture";
-const GITHUB_REPO = "china";
+const GITHUB_REPO = "sp";
 const GITHUB_BRANCH = "main";const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const STORE_LOGO_KEY = "Logo.png";
 const WATERMARK_IMAGE_KEY = "Watermark.png";
